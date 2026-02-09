@@ -1,16 +1,22 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Collections.Generic;
 
-public class CustomClass : MonoBehaviour
+
+namespace EtudeProject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Serializable]
+    public class AvatarStateData
     {
-        
+        public string avatarID;
+        public bool unlocked;
     }
 
-    // Update is called once per frame
-    void Update()
+    [Serializable]
+    public class PlayerSaveData
     {
-        
+        public string currentAvatarID;
+        public List<AvatarStateData> avatarStateDataList;
     }
+
 }
