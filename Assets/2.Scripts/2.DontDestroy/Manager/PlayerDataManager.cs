@@ -1,5 +1,7 @@
 ﻿using EtudeProject;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerDataManager : Singleton<PlayerDataManager>
@@ -33,18 +35,40 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         CurrentSaveData = JsonUtility.FromJson<PlayerSaveData>(json);
 
         // 검증
-        ValidateAvatarState();
+        ValidateHeroState();
 
     }
 
     private void CreatePlayerData()
     {
         Debug.Log("<color=red> 새로운 플레이어 데이터 생성! </color>");
+
+        HeroDatabase database = HeroManager.Instance.heroDatabase;
+        List<HeroStateData> state = new List<HeroStateData>();
+
+        foreach (HeroSO heroSO in database.heroList)
+        {
+            HeroStateData heroState = new HeroStateData();
+            heroState.heroID = heroSO.heroName;
+            heroState.unlocked = heroSO.defaultUnlocked;
+
+            state.Add(heroState);
+        }
+
+        var firstHero = database.heroList.First(hero => hero.defaultUnlocked);
+
+        CurrentSaveData = new PlayerSaveData
+        {
+            currentHeroID = firstHero.heroName,
+            heroStateDataList = state
+        };
+
+        PlayerDataSave();
     }
 
-    private void ValidateAvatarState()
+    private void ValidateHeroState()
     {
-
+        Debug.Log("<color=green> 플레이어 데이터 로드! </color>");
     }
 
     public void PlayerDataSave()

@@ -6,17 +6,17 @@ using System.Collections.Generic;
 namespace EtudeProject
 {
     [Serializable]
-    public class AvatarStateData
+    public class HeroStateData
     {
-        public string avatarID;
-        public bool unlocked;
+        public string heroID;
+        public bool unlocked;        
     }
 
     [Serializable]
     public class PlayerSaveData
     {
-        public string currentAvatarID;
-        public List<AvatarStateData> avatarStateDataList;
+        public string currentHeroID;
+        public List<HeroStateData> heroStateDataList;
     }
 
 }
