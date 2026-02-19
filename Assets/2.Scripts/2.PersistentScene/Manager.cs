@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Manager<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance;
 
@@ -19,7 +19,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
                     GameObject go = new GameObject(typeof(T).Name);
                     instance = go.AddComponent<T>();
-                    DontDestroyOnLoad(go);
+                    //DontDestroyOnLoad(go);
                 }
             }
             return instance;
@@ -31,7 +31,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         if (instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {

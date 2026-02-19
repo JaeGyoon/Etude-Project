@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerDataManager : Singleton<PlayerDataManager>
+public class PlayerDataManager : Manager<PlayerDataManager>
 {
     // 프로퍼티를 사용해 대문자 사용
     //public PlayerSaveData CurrentSaveData { get; private set; }

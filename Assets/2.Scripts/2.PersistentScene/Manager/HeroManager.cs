@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class HeroManager : Singleton<HeroManager>
+public class HeroManager : Manager<HeroManager>
 {
     public HeroDatabase heroDatabase;
 
