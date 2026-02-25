@@ -1,16 +1,30 @@
+﻿using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SceneLoadManager : MonoBehaviour
+public class SceneLoadManager : Manager<SceneLoadManager>
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private string currentScene;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private async void Start()
     {
-        
+        await LoadScene("2.LobbyScene"); 
+    }
+
+    public async Task LoadScene(string sceneName)
+    {
+        if (!string.IsNullOrEmpty(currentScene))
+        {
+            await SceneManager.UnloadSceneAsync(currentScene);
+        }
+
+        await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        currentScene = sceneName;
     }
 }
