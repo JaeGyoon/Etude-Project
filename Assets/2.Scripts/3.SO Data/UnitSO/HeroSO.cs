@@ -5,6 +5,6 @@ public class HeroSO : ScriptableObject
 {
     public string heroName;
     public Sprite heroImage;
-    public string prefabAddress;
+    public string addressKey;
     public bool defaultUnlocked;
 }

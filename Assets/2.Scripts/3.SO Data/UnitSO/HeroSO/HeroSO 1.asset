@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: hero1
   heroImage: {fileID: 0}
-  prefabAddress: 
+  addressKey: Character/Man
   defaultUnlocked: 1
