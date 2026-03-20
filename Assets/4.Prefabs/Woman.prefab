@@ -9,6 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7340607871195605719}
+  - component: {fileID: 6532598384014236494}
+  - component: {fileID: 5370762419943710469}
+  - component: {fileID: 6598379044104368914}
+  - component: {fileID: 6909110207373072195}
+  - component: {fileID: 111424264853164462}
+  - component: {fileID: 1536411287988335666}
   m_Layer: 3
   m_Name: Woman
   m_TagString: Untagged
@@ -32,6 +38,108 @@ Transform:
   - {fileID: 7127666366439789672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6532598384014236494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecdc5ab2ac740c246ad0795a0fbcfef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3749987895316401682}
+  moveInput: {x: 0, y: 0, z: 0}
+  moveJoystick: {fileID: 0}
+--- !u!114 &5370762419943710469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ea012537f76724e8aafbcac2d55f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &6598379044104368914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8574839a479649beb9b68911a8b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6909110207373072195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8566069be78e73d42b602fcd2fa662a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &111424264853164462
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &1536411287988335666
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437014007289296791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!1001 &2767758464351666564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -773,6 +881,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f7b43597854e34a9c76fc0a163c04e, type: 3}
+--- !u!95 &3749987895316401682 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1325095919776583574, guid: 12f7b43597854e34a9c76fc0a163c04e, type: 3}
+  m_PrefabInstance: {fileID: 2767758464351666564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7127666366439789672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4936934079412540908, guid: 12f7b43597854e34a9c76fc0a163c04e, type: 3}

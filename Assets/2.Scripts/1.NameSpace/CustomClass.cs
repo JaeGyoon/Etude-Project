@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace EtudeProject
 {
     [Serializable]
@@ -19,4 +18,74 @@ namespace EtudeProject
         public List<HeroStateData> heroStateDataList;
     }
 
+    [Serializable]
+    public abstract class CharacterState
+    {
+        public virtual void Enter(CharacterController controller) { }
+        public virtual void Stay(CharacterController controller) { }
+        public virtual void Exit(CharacterController controller) { }
+    }
+
+    public class IdleState : CharacterState
+    {
+        public override void Enter(CharacterController controller)
+        {
+            controller.animator.SetFloat("MoveSpeed", 0);
+        }
+    }
+
+    public class MoveState : CharacterState
+    {
+        public override void Stay(CharacterController controller)
+        {
+            Vector3 direction = controller.moveInput;
+
+            //controller.Move(direction);
+
+            controller.animator.SetFloat("MoveSpeed", direction.magnitude);
+        }
+    }
+
+
+    [Serializable]
+    public class CharacterStateMachine
+    {
+        CharacterController owner;
+
+        Dictionary<CharacterStateType, CharacterState> states;
+        CharacterState currentState;
+
+        //생성자
+        public CharacterStateMachine(CharacterController controller)
+        {
+            this.owner = controller;
+
+            states = new Dictionary<CharacterStateType, CharacterState>()
+            {
+                { CharacterStateType.Idle, new IdleState() },
+                { CharacterStateType.Move, new MoveState() },
+            };
+        }
+
+        public void ChangeState(CharacterStateType type)
+        {
+            if ( currentState == states[type])
+            {
+                return;
+            }
+
+            currentState?.Exit(owner);
+
+            currentState = states[type];
+
+            currentState?.Enter(owner);
+        }
+
+        public void StayState()
+        {
+            currentState?.Stay(owner);
+        }
+    }
+
+    
 }

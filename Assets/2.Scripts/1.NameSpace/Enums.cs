@@ -1,16 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Enums : MonoBehaviour
+namespace EtudeProject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public enum CharacterStateType
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Idle,
+        Move,
+        Attack,
+        Dead
     }
 }
