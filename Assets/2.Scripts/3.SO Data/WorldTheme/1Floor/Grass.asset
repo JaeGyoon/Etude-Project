@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e97854ebeff1004fb2355c5f734e356, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  themeName: Grass
+  groundMaterial: {fileID: 2100000, guid: b2b6648765ea60e4594d772126c7b2c0, type: 2}
+  enemyPrefabs:
+  - {fileID: 3680438880047819238, guid: 8118716463b526d4db4862b8a4f21605, type: 3}
+  - {fileID: 3650396114443527638, guid: c1a34989ef0f0ac4ba3d12202801bb53, type: 3}
+  props: []
+  stageScenes: []
