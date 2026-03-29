@@ -15,6 +15,7 @@ namespace EtudeProject
     public class PlayerSaveData
     {
         public string currentHeroID;
+        public int currentStage;
         public List<HeroStateData> heroStateDataList;
     }
 

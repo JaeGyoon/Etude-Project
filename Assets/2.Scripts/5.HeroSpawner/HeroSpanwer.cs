@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Threading.Tasks;
+using Unity.Cinemachine;
+
 public class HeroSpanwer : PreviewSpawner
 {
     public MoveJoystick moveJoystick;
+    public CinemachineCamera cinemachineCamera;
 
-    protected async void Start()
+    protected override async void Start()
     {
         spawnPoint = this.transform;
         GameObject go = await SpawnHero();
 
         Debug.Log($"<color=red> {go.name} </color>");
+
         JoystickConnection(go);
-        
+        CameraConnection(go);
     }
 
     void JoystickConnection(GameObject hero)
@@ -21,9 +25,9 @@ public class HeroSpanwer : PreviewSpawner
         moveJoystick.owner = controller;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void CameraConnection(GameObject hero)
+    {        
+        cinemachineCamera.Follow = hero.transform;
     }
+
 }

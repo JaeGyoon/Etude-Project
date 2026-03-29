@@ -8,7 +8,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
 {
     // 프로퍼티를 사용해 대문자 사용
     //public PlayerSaveData CurrentSaveData { get; private set; }
-    public PlayerSaveData CurrentSaveData;
+    public PlayerSaveData currentSaveData;
 
     private string SavePath => Path.Combine(Application.persistentDataPath, "PlayerData.json");
 
@@ -33,7 +33,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
 
         string json = File.ReadAllText(SavePath);
 
-        CurrentSaveData = JsonUtility.FromJson<PlayerSaveData>(json);
+        currentSaveData = JsonUtility.FromJson<PlayerSaveData>(json);
 
         Debug.Log("<color=green> 플레이어 데이터 로드! </color>");
 
@@ -60,7 +60,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
 
         var firstHero = database.heroList.First(hero => hero.defaultUnlocked);
 
-        CurrentSaveData = new PlayerSaveData
+        currentSaveData = new PlayerSaveData
         {
             currentHeroID = firstHero.heroName,
             heroStateDataList = state
@@ -78,13 +78,13 @@ public class PlayerDataManager : Manager<PlayerDataManager>
         foreach (HeroSO heroSO in database.heroList)
         {
             // 현재 heroStateDataList에 없는 heroSO가 있을 경우
-            if ( !CurrentSaveData.heroStateDataList.Any(hero => hero.heroID == heroSO.heroName))
+            if ( !currentSaveData.heroStateDataList.Any(hero => hero.heroID == heroSO.heroName))
             {
                 HeroStateData heroState = new HeroStateData();
                 heroState.heroID = heroSO.heroName;
                 heroState.unlocked = heroSO.defaultUnlocked;
 
-                CurrentSaveData.heroStateDataList.Add(heroState);
+                currentSaveData.heroStateDataList.Add(heroState);
                 Debug.Log("<color=orange> 신규 영웅 추가! </color>");
             }
         }
@@ -93,7 +93,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     public void PlayerDataSave()
     {
         //true => prettyPrint: 보기 좋게 줄바꿈/들여쓰기 할지 여부
-        string json = JsonUtility.ToJson(CurrentSaveData, true);
+        string json = JsonUtility.ToJson(currentSaveData, true);
 
         File.WriteAllText(SavePath, json);
     }

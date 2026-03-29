@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grass
   m_EditorClassIdentifier: 
   themeName: Grass
-  groundMaterial: {fileID: 2100000, guid: b2b6648765ea60e4594d772126c7b2c0, type: 2}
+  groundPrefab: {fileID: 2400348345865497622, guid: 608a4d61b11f9b54e8d49d1d191b0107, type: 3}
   enemyPrefabs:
   - {fileID: 3680438880047819238, guid: 8118716463b526d4db4862b8a4f21605, type: 3}
   - {fileID: 3650396114443527638, guid: c1a34989ef0f0ac4ba3d12202801bb53, type: 3}

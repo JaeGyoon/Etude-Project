@@ -5,7 +5,7 @@ public class WorldThemeSO : ScriptableObject
 {
     public string themeName;
 
-    public Material groundMaterial;
+    public GameObject groundPrefab;
 
     public GameObject[] enemyPrefabs;
     public GameObject[] props;

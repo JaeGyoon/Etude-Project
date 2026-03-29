@@ -19,7 +19,7 @@ public class HeroManager : Manager<HeroManager>
 
     public bool HeroUnlockCheck(string heroName)
     {
-        return PlayerDataManager.Instance.CurrentSaveData.heroStateDataList.Any(hero => (hero.heroID == heroName) && hero.unlocked);
+        return PlayerDataManager.Instance.currentSaveData.heroStateDataList.Any(hero => (hero.heroID == heroName) && hero.unlocked);
     }
 
     public void SelectHero(string heroName)
@@ -30,7 +30,7 @@ public class HeroManager : Manager<HeroManager>
             return;
         }
 
-        PlayerDataManager.Instance.CurrentSaveData.currentHeroID = heroName;
+        PlayerDataManager.Instance.currentSaveData.currentHeroID = heroName;
         PlayerDataManager.Instance.PlayerDataSave();
 
         // 생성은 추후 오브젝트 풀을 통해 구현할 예정

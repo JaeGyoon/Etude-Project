@@ -9,4 +9,12 @@ namespace EtudeProject
         Attack,
         Dead
     }
+
+    public enum StageFloor
+    {
+       Floor1 = 0,
+       Floor2 = 1,
+       Floor3 = 2,
+
+    }
 }

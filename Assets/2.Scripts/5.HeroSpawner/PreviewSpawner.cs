@@ -26,7 +26,7 @@ public class PreviewSpawner : MonoBehaviour
             currentHero = null;
         }
 
-        string heroName = PlayerDataManager.Instance.CurrentSaveData.currentHeroID;
+        string heroName = PlayerDataManager.Instance.currentSaveData.currentHeroID;
 
         Debug.Log($"히어로 네임 {heroName}");
 
