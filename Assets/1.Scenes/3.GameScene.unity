@@ -622,6 +622,7 @@ MonoBehaviour:
   currentHero: {fileID: 0}
   moveJoystick: {fileID: 1712709432}
   cinemachineCamera: {fileID: 547445573}
+  mapGenerator: {fileID: 2012033767}
 --- !u!1001 &1193044296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1190,7 +1191,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11905deda075e9e4a9e5e988f1a075a9, type: 2}
   - {fileID: 0}
   currentTheme: {fileID: 0}
-  playerPos: {x: 0, y: 0}
+  playerPos: {fileID: 0}
+  currentTile: {x: 0, y: 0}
+  testPos: {x: 0, y: 0}
 --- !u!1001 &2414971464083881657
 PrefabInstance:
   m_ObjectHideFlags: 0

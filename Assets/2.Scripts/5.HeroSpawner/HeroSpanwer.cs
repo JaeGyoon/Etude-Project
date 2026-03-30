@@ -6,6 +6,7 @@ public class HeroSpanwer : PreviewSpawner
 {
     public MoveJoystick moveJoystick;
     public CinemachineCamera cinemachineCamera;
+    public MapGenerator mapGenerator;
 
     protected override async void Start()
     {
@@ -16,6 +17,7 @@ public class HeroSpanwer : PreviewSpawner
 
         JoystickConnection(go);
         CameraConnection(go);
+        PlayerTargeting(currentHero);
     }
 
     void JoystickConnection(GameObject hero)
@@ -30,4 +32,8 @@ public class HeroSpanwer : PreviewSpawner
         cinemachineCamera.Follow = hero.transform;
     }
 
+    void PlayerTargeting(GameObject hero)
+    {
+        mapGenerator.playerPos = hero.transform;
+    }
 }

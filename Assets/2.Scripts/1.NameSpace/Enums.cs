@@ -10,11 +10,9 @@ namespace EtudeProject
         Dead
     }
 
-    public enum StageFloor
+    public enum Direction
     {
-       Floor1 = 0,
-       Floor2 = 1,
-       Floor3 = 2,
-
+       Horizontal = 0,
+       Vertical = 1,
     }
 }
