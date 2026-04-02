@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "ThemeDatabase", menuName = "Scriptable Objects/ThemeDatabase")]
-public class ThemeDatabase : ScriptableObject
+[CreateAssetMenu(fileName = "StageSO", menuName = "Scriptable Objects/StageSO")]
+public class StageSO : ScriptableObject
 {
-    public List<WorldThemeSO> themes;
+    public int stageNumber;
+    public List<BiomeSO> biomeList;
 }

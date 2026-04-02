@@ -2,23 +2,25 @@
 
 public class MapManager : Manager<MapManager>
 {
-    public int currentFloor;
-    public WorldThemeSO currentTheme;
+    public BiomeSO currentBiome;
+    public StageSO currentStage;
 
     protected override void Awake()
     {
         base.Awake();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StageApply(StageSO stage)
     {
-        
+        currentStage = stage;
+        BiomeApply(stage);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BiomeApply(StageSO stage)
     {
-        
+        int index = Random.Range(0, stage.biomeList.Count);
+        currentBiome = stage.biomeList[index];
+
+        Debug.Log($"선택된 바이옴 : {currentBiome.biomeName}");
     }
 }

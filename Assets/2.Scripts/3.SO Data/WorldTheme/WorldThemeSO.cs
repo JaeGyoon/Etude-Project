@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "WorldThemeSO", menuName = "Scriptable Objects/WorldTheme")]
-public class WorldThemeSO : ScriptableObject
+[CreateAssetMenu(fileName = "BiomeSO", menuName = "Scriptable Objects/Biome")]
+public class BiomeSO : ScriptableObject
 {
-    public string themeName;
+    public string biomeName;
 
     public GameObject groundPrefab;
 
     public GameObject[] enemyPrefabs;
-    public GameObject[] props;
 
-    public string[] stageScenes;
+
+
+    public GameObject[] environmentPrefabs;
 }

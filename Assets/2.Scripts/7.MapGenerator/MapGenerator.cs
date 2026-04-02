@@ -1,4 +1,4 @@
-﻿using EtudeProject;
+﻿/*using EtudeProject;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
@@ -93,8 +93,7 @@ public class MapGenerator : MonoBehaviour
             }
 
             currentTile = currentPos;
-            /*TileMovement(currentPos - currentTile);
-            currentTile = currentPos;*/
+            
         }
     }
 
@@ -113,7 +112,6 @@ public class MapGenerator : MonoBehaviour
 
             targetTile.transform.position += moveOffset;
 
-
             for (int j = 0; j < 3 - 1; j++)
             {
                 int current = direction > 0 ? j : 2 - j;
@@ -126,12 +124,17 @@ public class MapGenerator : MonoBehaviour
             }
 
             if (eDir == Direction.Horizontal)
+            {
                 tiles[to, i] = targetTile;
+                
+            }
             else
+            {
                 tiles[i, to] = targetTile;
-
+            }
 
         }
 
     }
 }
+*/
