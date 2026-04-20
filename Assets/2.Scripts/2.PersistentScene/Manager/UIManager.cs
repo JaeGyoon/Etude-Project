@@ -1,0 +1,88 @@
+﻿using EtudeProject;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIManager : Manager<UIManager>
+{
+    [Header("Stage")]
+    public Transform stageContent;
+
+    [SerializeField] private List<BasePopupUI> popupList;
+
+    private Dictionary<UIType, BasePopupUI> popupDict = new Dictionary<UIType, BasePopupUI>();
+    private Stack<BasePopupUI> popupStack = new Stack<BasePopupUI>();
+
+    [Header("Btns")]
+    public Image stageImage;
+    public TextMeshProUGUI stageName;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    private void Start()
+    {
+        PopupRegist();
+    }
+
+    private void PopupRegist()
+    {
+        foreach (BasePopupUI popup in popupList)
+        {
+            popupDict.Add(popup.type, popup);
+            popup.gameObject.SetActive(false);
+            Debug.Log("등록됨!");
+        }
+    }
+
+    public void OpenUI(UIType type)
+    {
+        
+        // 방어코드
+        if (!popupDict.ContainsKey(type))
+        {
+            Debug.Log($"해당 Key 없음 : {type}");
+            return;
+        }
+
+        BasePopupUI popup = popupDict[type];
+
+        // 이미 팝업창이 열려있다면
+        if (popupStack.Contains(popup))
+        {
+            CloseUI(type);
+
+            return;
+        }
+
+        popup.Open();
+        popupStack.Push(popup);
+    }
+
+    public void CloseUI(UIType type)
+    {
+        if (popupStack.Count == 0)
+        {
+            return;
+        }
+
+        BasePopupUI popup = popupStack.Pop();
+        popup.Close();
+    }
+
+    public void StageApply()
+    {
+        int index = PlayerDataManager.Instance.currentSaveData.currentStage;
+        Debug.Log($"인덱스 결과! {index}");
+
+
+        StageManager.Instance.currentStage = StageManager.Instance.catalogSO.stageList[index];
+        StageSO so = StageManager.Instance.currentStage;
+
+        stageImage.sprite = so.stageImage;
+        stageName.text = so.stageName;
+    }
+}

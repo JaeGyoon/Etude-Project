@@ -14,9 +14,10 @@ namespace EtudeProject
     [Serializable]
     public class PlayerSaveData
     {
-        public string currentHeroID;
-        public int currentStage;
+        public string currentHeroID;        
         public List<HeroStateData> heroStateDataList;
+        public int currentStage;
+        public int highestStage = 1;    // 0이면 튜토리얼 단계를 할지? 1부터 바로 시작할지 
     }
 
     [Serializable]

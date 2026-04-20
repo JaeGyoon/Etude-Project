@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HeroManager : Manager<HeroManager>
 {
-    public HeroDatabase heroDatabase;
+    public HeroCatalog heroCatalog;
 
     private GameObject currentHero;
     protected override void Awake()

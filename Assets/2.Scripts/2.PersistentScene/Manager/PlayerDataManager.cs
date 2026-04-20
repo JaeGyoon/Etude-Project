@@ -5,9 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 public class PlayerDataManager : Manager<PlayerDataManager>
-{
-    // 프로퍼티를 사용해 대문자 사용
-    //public PlayerSaveData CurrentSaveData { get; private set; }
+{    
     public PlayerSaveData currentSaveData;
 
     private string SavePath => Path.Combine(Application.persistentDataPath, "PlayerData.json");
@@ -15,16 +13,20 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     protected override void Awake()
     {
         base.Awake();
+
+        PlayerDataLoad();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PlayerDataLoad();
+        
     }
 
     public void PlayerDataLoad()
     {
+        Debug.Log($"경로 : {SavePath}");
+
         if (!File.Exists(SavePath))
         {
             CreatePlayerData();
@@ -46,7 +48,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     {
         Debug.Log("<color=red> 새로운 플레이어 데이터 생성! </color>");
 
-        HeroDatabase database = HeroManager.Instance.heroDatabase;
+        HeroCatalog database = HeroManager.Instance.heroCatalog;
         List<HeroStateData> state = new List<HeroStateData>();
 
         foreach (HeroSO heroSO in database.heroList)
@@ -73,7 +75,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     {
         Debug.Log("<color=gray> 업데이트 내역과 비교! </color>");
 
-        HeroDatabase database = HeroManager.Instance.heroDatabase;
+        HeroCatalog database = HeroManager.Instance.heroCatalog;
 
         foreach (HeroSO heroSO in database.heroList)
         {
@@ -91,10 +93,12 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     }
 
     public void PlayerDataSave()
-    {
+    {        
         //true => prettyPrint: 보기 좋게 줄바꿈/들여쓰기 할지 여부
         string json = JsonUtility.ToJson(currentSaveData, true);
 
         File.WriteAllText(SavePath, json);
+
+        Debug.Log("저장!");
     }
 }

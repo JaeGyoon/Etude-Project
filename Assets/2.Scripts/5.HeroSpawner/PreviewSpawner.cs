@@ -6,7 +6,7 @@ using System;
 
 public class PreviewSpawner : MonoBehaviour
 {
-    public HeroDatabase heroDatabase;
+    public HeroCatalog heroCatalog;
 
     public GameObject currentHero;
 
@@ -30,7 +30,7 @@ public class PreviewSpawner : MonoBehaviour
 
         Debug.Log($"히어로 네임 {heroName}");
 
-        HeroSO so = heroDatabase.GetHero(heroName);
+        HeroSO so = heroCatalog.GetHero(heroName);
 
         Debug.Log($"어드레스 키 {so.addressKey}");
 

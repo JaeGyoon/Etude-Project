@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e97854ebeff1004fb2355c5f734e356, type: 3}
   m_Name: DeathLand
   m_EditorClassIdentifier: 
-  themeName: DeathLand
+  stageNumber: 1
+  stageName: DeathLand
   groundPrefab: {fileID: 3621168775739595451, guid: 0e84e01366d993f4aaeeb7d12ae61d85, type: 3}
   enemyPrefabs:
   - {fileID: 8207363508085791964, guid: ab241eb7459d02d48abad8ef6cc479c0, type: 3}
   - {fileID: 627129016949705057, guid: 0abd09e693366bd4e8b7836695497493, type: 3}
-  props: []
-  stageScenes: []
+  environmentPrefabs: []
+  stageImage: {fileID: 21300000, guid: 5806a8e20acc3ca43936b2ec1666f1c8, type: 3}

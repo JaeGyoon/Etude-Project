@@ -10,9 +10,12 @@ namespace EtudeProject
         Dead
     }
 
-    public enum Direction
+    public enum UIType
     {
-       Horizontal = 0,
-       Vertical = 1,
+       None = 0,
+       StageSelect = 1,
+       HeroSelect = 2,
+       Option = 3,
+       QuestList = 4,
     }
 }
