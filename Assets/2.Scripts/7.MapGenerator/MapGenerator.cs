@@ -1,4 +1,4 @@
-﻿/*using EtudeProject;
+﻿using EtudeProject;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,22 +6,20 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] private int currentStage;
-    [SerializeField] private List<ThemeDatabase> themeList;
-    [SerializeField] private WorldThemeSO currentTheme;
+    [SerializeField] private StageSO currentStage;
+    // [SerializeField] private List<ThemeDatabase> themeList;
+    // [SerializeField] private WorldThemeSO currentTheme;
 
     private const int tileDistance = 40;
     private GameObject[,] tiles = new GameObject[3, 3];
 
     public Transform playerPos;
     public Vector2Int currentTile;
-
     public Vector2Int currentPos;
 
     void Start()
     {
-        CurrentStageLoad();
-        ThemeRandomSelect();
+        CurrentStageLoad();        
 
         GroundGeneration();
     }
@@ -39,19 +37,9 @@ public class MapGenerator : MonoBehaviour
 
     private void CurrentStageLoad()
     {
-        currentStage = PlayerDataManager.Instance.currentSaveData.currentStage;
+        currentStage = StageManager.Instance.currentStageSO;
     }
 
-    private void ThemeRandomSelect()
-    {
-        ThemeDatabase database = themeList[currentStage];
-
-        int index = Random.Range(0, database.themes.Count);
-
-        currentTheme = database.themes[index];
-
-        Debug.Log($"선택된 테마: {currentTheme.themeName}");
-    }
 
     private void GroundGeneration()
     {
@@ -63,7 +51,7 @@ public class MapGenerator : MonoBehaviour
 
                 Quaternion planeQuaternion = Quaternion.Euler(new Vector3(0, -180f, 0));
 
-                tiles[x + 1, z + 1] = Instantiate(currentTheme.groundPrefab, pos, planeQuaternion);
+                tiles[x + 1, z + 1] = Instantiate(currentStage.groundPrefab, pos, planeQuaternion);
             }
         }
 
@@ -71,7 +59,7 @@ public class MapGenerator : MonoBehaviour
     }
 
     private void PlayerTracking()
-    {        
+    {
         // 중앙 타일을 (0,0) 기준으로 -1, 0 , 1 값으로 현재 있는 위치 표시
         currentPos = new Vector2Int(
             (int)(playerPos.position.x / (tileDistance / 2)),
@@ -82,7 +70,7 @@ public class MapGenerator : MonoBehaviour
         {
             Vector2Int direction = currentPos - currentTile;
 
-            if ( direction.x != 0)
+            if (direction.x != 0)
             {
                 TileMovement(direction.x, Direction.Horizontal);
             }
@@ -93,12 +81,12 @@ public class MapGenerator : MonoBehaviour
             }
 
             currentTile = currentPos;
-            
+
         }
     }
 
     private void TileMovement(int direction, Direction eDir)
-    {      
+    {
         for (int i = 0; i < 3; i++)
         {
             int from = direction > 0 ? 0 : 2;
@@ -126,7 +114,7 @@ public class MapGenerator : MonoBehaviour
             if (eDir == Direction.Horizontal)
             {
                 tiles[to, i] = targetTile;
-                
+
             }
             else
             {
@@ -137,4 +125,3 @@ public class MapGenerator : MonoBehaviour
 
     }
 }
-*/

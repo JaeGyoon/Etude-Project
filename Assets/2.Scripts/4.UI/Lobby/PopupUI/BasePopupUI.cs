@@ -1,7 +1,7 @@
 ﻿using EtudeProject;
 using UnityEngine;
 
-public abstract class BasePopupUI : MonoBehaviour
+public class BasePopupUI : MonoBehaviour
 {
     public UIType type;
 

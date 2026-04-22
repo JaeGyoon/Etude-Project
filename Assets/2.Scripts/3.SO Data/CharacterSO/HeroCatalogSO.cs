@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HeroCatalog", menuName = "Scriptable Objects/HeroCatalog")]
-public class HeroCatalog : ScriptableObject
+[CreateAssetMenu(fileName = "HeroCatalogSO", menuName = "Scriptable Objects/HeroCatalog")]
+public class HeroCatalogSO : ScriptableObject
 {
     public List<HeroSO> heroList;
 

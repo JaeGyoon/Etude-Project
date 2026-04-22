@@ -1,36 +1,45 @@
-﻿using UnityEngine;
+﻿using EtudeProject;
+using System;
+using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using System.Threading.Tasks;
-using System;
 
 public class PreviewSpawner : MonoBehaviour
 {
-    public HeroCatalog heroCatalog;
+    //public HeroCatalogSO heroCatalog;
 
-    public GameObject currentHero;
+    //public GameObject currentHero;
 
     protected Transform spawnPoint;
 
     protected virtual async void Start()
-    {
+    {        
         spawnPoint = this.transform;
         await SpawnHero();
+
+        //UIManager.Instance.spawner = this;
+
+        UIManager.Instance.OpenUI(UIType.LobbyUI);
     }
 
     public async Task<GameObject> SpawnHero()
     {
-        if (currentHero != null)
+        if (HeroManager.Instance.currentHero != null)
         {
-            Addressables.ReleaseInstance(currentHero);
-            currentHero = null;
+            Addressables.ReleaseInstance(HeroManager.Instance.currentHero);
+            HeroManager.Instance.currentHero = null;
         }
+
+
 
         string heroName = PlayerDataManager.Instance.currentSaveData.currentHeroID;
 
+
+
         Debug.Log($"히어로 네임 {heroName}");
 
-        HeroSO so = heroCatalog.GetHero(heroName);
+        HeroSO so = SODataManager.Instance.heroCatalog.GetHero(heroName);
 
         Debug.Log($"어드레스 키 {so.addressKey}");
 
@@ -40,8 +49,8 @@ public class PreviewSpawner : MonoBehaviour
 
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
-            currentHero = handle.Result;
-            return currentHero;
+            HeroManager.Instance.currentHero = handle.Result;
+            return HeroManager.Instance.currentHero;
         }
         else
         {

@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class HeroManager : Manager<HeroManager>
 {
-    public HeroCatalog heroCatalog;
+    public HeroCatalogSO heroCatalog;
 
-    private GameObject currentHero;
+    public HeroSO currentHeroSO;
+    public GameObject currentHero;
+
     protected override void Awake()
     {
         base.Awake();

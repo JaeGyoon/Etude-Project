@@ -12,10 +12,10 @@ public class SceneLoadManager : Manager<SceneLoadManager>
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private async void Start()
+    /*private async void Start()
     {
         await LoadScene("2.LobbyScene"); 
-    }
+    }*/
 
     public async Task LoadScene(string sceneName)
     {

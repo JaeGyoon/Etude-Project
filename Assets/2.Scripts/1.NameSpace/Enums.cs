@@ -14,8 +14,14 @@ namespace EtudeProject
     {
        None = 0,
        StageSelect = 1,
-       HeroSelect = 2,
-       Option = 3,
-       QuestList = 4,
+       LobbyUI = 2,
+       LoadingUI = 3,
+    }
+
+    public enum Direction
+    {
+        Horizontal = 0,
+        Vertical = 1,
+
     }
 }

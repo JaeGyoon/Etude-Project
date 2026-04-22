@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerDataManager : Manager<PlayerDataManager>
@@ -13,8 +14,6 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     protected override void Awake()
     {
         base.Awake();
-
-        PlayerDataLoad();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,7 +37,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
         currentSaveData = JsonUtility.FromJson<PlayerSaveData>(json);
 
         Debug.Log("<color=green> 플레이어 데이터 로드! </color>");
-
+        Debug.Log($"<color=orange> {json} </color>");
         // 검증
         ValidateHeroState();
 
@@ -48,7 +47,7 @@ public class PlayerDataManager : Manager<PlayerDataManager>
     {
         Debug.Log("<color=red> 새로운 플레이어 데이터 생성! </color>");
 
-        HeroCatalog database = HeroManager.Instance.heroCatalog;
+        HeroCatalogSO database = HeroManager.Instance.heroCatalog;
         List<HeroStateData> state = new List<HeroStateData>();
 
         foreach (HeroSO heroSO in database.heroList)
@@ -73,9 +72,9 @@ public class PlayerDataManager : Manager<PlayerDataManager>
 
     private void ValidateHeroState()
     {
-        Debug.Log("<color=gray> 업데이트 내역과 비교! </color>");
+        Debug.Log("업데이트 내역과 비교!");
 
-        HeroCatalog database = HeroManager.Instance.heroCatalog;
+        HeroCatalogSO database = HeroManager.Instance.heroCatalog;
 
         foreach (HeroSO heroSO in database.heroList)
         {
@@ -100,5 +99,16 @@ public class PlayerDataManager : Manager<PlayerDataManager>
         File.WriteAllText(SavePath, json);
 
         Debug.Log("저장!");
+    }
+
+    public void PlayerDataApply()
+    {
+        int stage = currentSaveData.currentStage;
+        StageManager.Instance.currentStageSO = StageManager.Instance.catalogSO.stageList[stage];
+        Debug.Log($"현재 스테이지 로드: {StageManager.Instance.currentStageSO.stageName}");
+
+        string hero = currentSaveData.currentHeroID;
+        HeroManager.Instance.currentHeroSO = HeroManager.Instance.heroCatalog.GetHero(hero);
+        Debug.Log($"현재 히어로 로드: {HeroManager.Instance.currentHeroSO.heroName}");
     }
 }

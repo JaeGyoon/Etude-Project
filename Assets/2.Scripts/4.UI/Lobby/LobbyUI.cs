@@ -1,33 +1,35 @@
-﻿using UnityEngine;
+﻿using EtudeProject;
+using UnityEngine;
 
-public class LobbyUI : MonoBehaviour
+public class LobbyUI : BasePopupUI
 {
     [Header("Stage Select")]
     //public Transform content;
     public GameObject stageBtnPrefab;
 
 
-    [Header("Game Start")]
-    [SerializeField] PreviewSpawner spawner;
+    //[Header("Game Start")]
+    //[SerializeField] PreviewSpawner spawner;
 
     private void Start()
     {
         StageManager.Instance.OnStageEventAction += GeneratorStageBtn;
         StageManager.Instance.ActionInvoke();
 
-
-
-        UIManager.Instance.StageApply();
+        
+        
     }
 
 
     public async void OnClickGameStartBtn()
     {
-        if (spawner.currentHero != null)
+        if (HeroManager.Instance.currentHero != null)
         {
-            Destroy(spawner.currentHero);
-            spawner.currentHero = null;
+            Destroy(HeroManager.Instance.currentHero);
+            HeroManager.Instance.currentHero = null;
         }
+
+        UIManager.Instance.CloseUI(UIType.LobbyUI);
 
         await SceneLoadManager.Instance.LoadScene("3.GameScene");
     }

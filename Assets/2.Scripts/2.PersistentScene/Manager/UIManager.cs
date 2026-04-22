@@ -18,6 +18,9 @@ public class UIManager : Manager<UIManager>
     public Image stageImage;
     public TextMeshProUGUI stageName;
 
+    [Header("Hero")]
+    public PreviewSpawner spawner;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,16 +28,16 @@ public class UIManager : Manager<UIManager>
 
     private void Start()
     {
-        PopupRegist();
+        //PopupRegist();
     }
 
-    private void PopupRegist()
+    public void PopupRegist()
     {
         foreach (BasePopupUI popup in popupList)
         {
             popupDict.Add(popup.type, popup);
             popup.gameObject.SetActive(false);
-            Debug.Log("등록됨!");
+            Debug.Log($"{popup.type}팝업 등록 ");
         }
     }
 
@@ -74,15 +77,12 @@ public class UIManager : Manager<UIManager>
     }
 
     public void StageApply()
-    {
-        int index = PlayerDataManager.Instance.currentSaveData.currentStage;
-        Debug.Log($"인덱스 결과! {index}");
-
-
-        StageManager.Instance.currentStage = StageManager.Instance.catalogSO.stageList[index];
-        StageSO so = StageManager.Instance.currentStage;
+    {        
+        StageSO so = StageManager.Instance.currentStageSO;
 
         stageImage.sprite = so.stageImage;
         stageName.text = so.stageName;
+
+        Debug.Log("스테이지 적용!");
     }
 }
