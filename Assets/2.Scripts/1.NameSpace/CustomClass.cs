@@ -89,5 +89,29 @@ namespace EtudeProject
         }
     }
 
-    
+
+    [Serializable]
+    public class MapConfig
+    {
+        [Header("Tile Settings")]
+        public int tileSize = 40;       // 타일 한 변 길이
+        public int gridCount = 3;       // 3x3 → 확장 가능
+
+        [Header("Chunk Settings")]
+        public int chunkResolution = 10;
+        public float wallHeight = 3f;
+        public float cellSize = 4f;
+
+
+        [Range(0, 100)] public int randomWallFillPercent = 45;
+        [Range(0, 100)] public int randomEnemyFillPercent = 20;
+
+
+        // 파생 값 (절대 하드코딩 금지)
+        public int halfGrid => gridCount / 2;
+        public int lastIndex => gridCount - 1;
+        public int moveStep => gridCount * tileSize;
+    }
+
+
 }

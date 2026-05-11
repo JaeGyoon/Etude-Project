@@ -18,5 +18,15 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 3680438880047819238, guid: 8118716463b526d4db4862b8a4f21605, type: 3}
   - {fileID: 3650396114443527638, guid: c1a34989ef0f0ac4ba3d12202801bb53, type: 3}
-  environmentPrefabs: []
+  environmentPrefabs:
+  - {fileID: 4625564145460219159, guid: ec775cc1b0d100e47a4ffa3ab2587942, type: 3}
   stageImage: {fileID: 21300000, guid: d0d788635c8f1b94abda01ddf732a53b, type: 3}
+  mapConfig:
+    tileSize: 40
+    gridCount: 3
+    chunkResolution: 80
+    wallHeight: 1
+    cellSize: 0.5
+    randomWallFillPercent: 85
+    randomEnemyFillPercent: 20
+  wallMaterial: {fileID: 2100000, guid: dd6c47aa2eba7e94bb72d05fd77a55cc, type: 2}

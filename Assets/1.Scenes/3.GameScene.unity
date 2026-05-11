@@ -1544,6 +1544,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStage: {fileID: 0}
+  config:
+    tileSize: 40
+    gridCount: 3
+    chunkResolution: 10
+    randomWallFillPercent: 45
+    randomEnemyFillPercent: 20
   playerPos: {fileID: 0}
   currentTile: {x: 0, y: 0}
   currentPos: {x: 0, y: 0}
